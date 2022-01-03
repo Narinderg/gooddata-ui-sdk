@@ -248,7 +248,7 @@ export class PluggableBaseChart extends AbstractPluggableVisualization {
             )
             .withDateFormat(dateFormat)
             .withExecConfig(executionConfig);
-
+        if(document.querySelector(".gjs-frame").contentWindow.document.querySelector(this.element)){  
         this.renderFun(
             <BaseChart
                 execution={execution}
@@ -267,8 +267,9 @@ export class PluggableBaseChart extends AbstractPluggableVisualization {
                 ErrorComponent={null}
                 theme={theme}
             />,
-            document.querySelector(this.element),
+             document.querySelector(".gjs-frame").contentWindow.document.querySelector(this.element),
         );
+        }
     }
 
     protected initializeProperties(visualizationProperties: IVisualizationProperties): void {
